@@ -45,6 +45,8 @@ echo "LDFLAGS=\"-pthread\"" >> config.site
 make -j2
 make install
 
+echo 'options(repos = c(CRAN="http://cran.r-project.org"))' > ~/.Rprofile
+
 # now you can install any packages you want, i need those, so i'll fix them here.
-RD -e "install.packages(c('roxygen2', 'devtools', 'knitr', 'checkmate', 'testthat', 'BH', 'Rcpp', 'rmarkdown')  )"
+R -e "install.packages(c('roxygen2', 'devtools', 'knitr', 'checkmate', 'testthat', 'BH', 'Rcpp', 'rmarkdown')  )"
 
