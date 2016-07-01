@@ -8,7 +8,7 @@ to allow for sanitized debugging.
 
 change to the vagrantR directory. make sure you have some gigs of hard drive space left. 
 as the vagrant box will need 2048mb of memory, make also sure you have enough ram left.
-(you might try to lower this, but be aware that compiling R might hen stop with a strange
+(you might try to lower this, but be aware that compiling R might then stop with a strange
 "gcc: internal compiler error: Killed (program cc1)" error. alternative you might want to
 add swap space.
 
@@ -35,6 +35,12 @@ to get rid of everything and then restart with vagrant up.
 you can adapt bootstrap.sh to your needs:
 
 - if you have more than 2 cpu cores, change the line 'make -j2' at the bottom of the script to 'make -jX', with X the number of cpu cores you want to use. this will speed up compiling.
+
+you can adapt Vagrantfile to your needs:
+
+- if you want to alloc more or less memory, change the 'line vb.customize ["modifyvm", :id, "--memory", "4096"]'
+
+
 
 # thanks
 
