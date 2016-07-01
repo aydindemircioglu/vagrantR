@@ -49,4 +49,4 @@ echo 'options(repos = c(CRAN="http://cran.r-project.org"))' > ~/.Rprofile
 
 # now you can install any packages you want, i need those, so i'll fix them here.
 R -e "install.packages(c('roxygen2', 'devtools', 'knitr', 'checkmate', 'testthat', 'BH', 'Rcpp', 'rmarkdown')  )"
-
+R -e 'devtools::install_github("hadley/devtools")'

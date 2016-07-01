@@ -32,14 +32,15 @@ to get rid of everything and then restart with vagrant up.
 
 # hints
 
-you can adapt bootstrap.sh to your needs:
+### you can adapt bootstrap.sh to your needs:
 
 - if you have more than 2 cpu cores, change the line 'make -j2' at the bottom of the script to 'make -jX', with X the number of cpu cores you want to use. this will speed up compiling.
 
-you can adapt Vagrantfile to your needs:
+### you can adapt Vagrantfile to your needs:
 
 - if you want to alloc more or less memory, change the 'line vb.customize ["modifyvm", :id, "--memory", "4096"]'
 
+### as everything is installed as root, you should 'sudo su' or prefix everything with sudo.
 
 
 # thanks
