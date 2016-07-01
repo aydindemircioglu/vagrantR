@@ -6,11 +6,10 @@ sudo apt-get update
 sudo apt-get upgrade
 
 # install some packages we need
-sudo apt-get install -y g++-6 gcc-6 make
+sudo apt-get install -y g++-6 gcc-6 make gfortran-6
 sudo apt-get install -y pandoc pandoc-citeproc
 sudo apt-get install -y libssl-dev libreadline-dev zlib1g-dev libbz2-dev liblzma-dev libpcre3-dev libcurl4-openssl-dev
 sudo apt-get install -y texlive texinfo texlive-fonts-extra
-sudo apt-get install -y fort77 
 
 
 # make sure we use gcc-6
@@ -21,6 +20,9 @@ sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-6 20
 sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-6 20
 sudo update-alternatives --config gcc
 sudo update-alternatives --config g++
+
+sudo update-alternatives --install /usr/bin/f77 f77 /usr/bin/gfortran-6 20
+
 
 
 # get latest R
@@ -34,9 +36,12 @@ echo "#! /bin/sh" > config.site
 echo "CC=\"gcc -std=gnu99 -fsanitize=undefined,address\"" >> config.site
 echo "CFLAGS=\"-fno-omit-frame-pointer -O2 -Wall -pedantic -mtune=native\"" >> config.site
 echo "CXX=\"g++ -fsanitize=undefined,address \"" >> config.site
+echo "CXXFLAGS=\"-pthread\"" >> config.site
+echo "LDFLAGS=\"-pthread\"" >> config.site
 
 # Configure and build R
-./configure --with-x=no 
+./configure --with-x=no --without-lapack --disable-openmp
+
 make -j2
 make install
 

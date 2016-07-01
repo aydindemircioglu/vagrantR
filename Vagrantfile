@@ -9,7 +9,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 	config.vm.box_url = "https://cloud-images.ubuntu.com/yakkety/current/yakkety-server-cloudimg-amd64-vagrant.box"
 	
 	config.vm.provider "virtualbox" do |vb|
-		vb.customize ["modifyvm", :id, "--memory", "1024"]
+		vb.customize ["modifyvm", :id, "--memory", "4096"]
 	end
 	config.vm.provision :shell, :path => "bootstrap.sh"
 	config.vm.network :forwarded_port, host: 4567, guest: 80
